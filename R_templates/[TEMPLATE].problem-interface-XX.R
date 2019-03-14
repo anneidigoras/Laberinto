@@ -1,7 +1,7 @@
 # =======================================================================
-# Names:
-# Group Number: 
-# Assignment:
+# Names:Anne Idigoras y Josune Ordoñes
+# Group Number: Wakanda
+# Assignment:Laberinto de Zapatos
 # Date:
 # =======================================================================
 # 1. Be sure to include, with this template, any necessary files
@@ -22,16 +22,27 @@
 # solve the problem.
 # (Depending on the problem, it should receive or not parameters)
 
-rows = 7
-columns = 7
-set.seed(123) #para aleatoriedad
+#rows = 7
+#columns = 7
+#set.seed(123) #para aleatoriedad
 
 #0=pie izquierdo
 #1=pie derecho
 
-perm = sample(0:(rows*columns-1)) #nose cmo hacer para que la permutacion sea de ceros y unos
-state.initial = matrix(sample(0:1, rows*columns,replace=TRUE),rows,columns)
+#perm = sample(0:(rows*columns-1)) #nose cmo hacer para que la permutacion sea de ceros y unos
+#state.initial = matrix(sample(0:1, rows*columns,replace=TRUE),rows,columns)
 #state.final   = matrix(sample(0:1,rows*columns,replace=TRUE),rows,columns)
+
+
+entorno<- data.frame(
+   x= c (1,1,1,1,1,1,1,2,2,2,2,2,2,2,3,3,3,3,3,3,3,4,4,4,4,4,4,4,5,5,5,5,5,5,5,6,6,6,6,6,6,6,7,7,7,7,7,7,7),
+   y= c(1,2,3,4,5,6,7,1,2,3,4,5,6,7,1,2,3,4,5,6,7,1,2,3,4,5,6,7,1,2,3,4,5,6,7,1,2,3,4,5,6,7,1,2,3,4,5,6,7),
+  pie = replicate(1,sample(0:1,49,rep=TRUE)),
+   muroA = replicate(1,sample(0:1,49,rep=TRUE)),
+  muroB = replicate(1,sample(0:1,49,rep=TRUE)),
+  muroI = replicate(1,sample(0:1,49,rep=TRUE)),
+  muroD =  replicate(1,sample(0:1,49,rep=TRUE))
+)
 actions.possible = data.frame(action=c("Arriba","Abajo","Izquierda","Derecha"),cost=1)
 
 
