@@ -1,7 +1,7 @@
 # =======================================================================
-# Names:
-# Group Number: 
-# Assignment:
+# Names: Anne Idigoras y Josune Ordoñez
+# Group Number: Wakanda
+# Assignment:Laberinto de Zapatos
 # Date:
 # =======================================================================
 # 1. Be sure to include, with this template, any necessary files
