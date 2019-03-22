@@ -1,5 +1,5 @@
 # =======================================================================
-# Names:Anne Idigoras y Josune Ordoñes
+# Names:Anne Idigoras y Josune Ordo??es
 # Group Number: Wakanda
 # Assignment:Laberinto de Zapatos
 # Date:
@@ -34,30 +34,45 @@
 #state.final   = matrix(sample(0:1,rows*columns,replace=TRUE),rows,columns)
 
 
-entorno<- data.frame(
-   x= c (1,1,1,1,1,1,1,2,2,2,2,2,2,2,3,3,3,3,3,3,3,4,4,4,4,4,4,4,5,5,5,5,5,5,5,6,6,6,6,6,6,6,7,7,7,7,7,7,7),
-   y= c(1,2,3,4,5,6,7,1,2,3,4,5,6,7,1,2,3,4,5,6,7,1,2,3,4,5,6,7,1,2,3,4,5,6,7,1,2,3,4,5,6,7,1,2,3,4,5,6,7),
-  pie = replicate(1,sample(0:1,49,rep=TRUE)),
-   muroA = replicate(1,sample(0:1,49,rep=TRUE)),
-  muroB = replicate(1,sample(0:1,49,rep=TRUE)),
-  muroI = replicate(1,sample(0:1,49,rep=TRUE)),
-  muroD =  replicate(1,sample(0:1,49,rep=TRUE))
-)
-actions.possible = data.frame(action=c("Arriba","Abajo","Izquierda","Derecha"),cost=1)
-
-
-initialize.problem = function(rows=7, columns=7, perm = sample(0:(rows*columns-1))){
+initialize.problem = function(lista=c(0,0,1,0,1,0,1,0,0),rows = 3,columns = 3,dfcomb=NULL){
   problem = list()
+  problem$mapa=  matrix(lista,rows,columns)
+  problem$rows=rows
+  problem$columns=columns
   
-   problem$state.initial = matrix(perm,nrow=rows,byrow = TRUE)
-   problem$state.final   = matrix(0:(rows*columns-1),nrow=rows,byrow = TRUE)
-   problem$actions.possible = data.frame(action=c("Arriba","Abajo","Izquierda","Derecha"),cost=1)
-   problem$rows = rows
-   problem$columns = columns
-   problem$name = paste0("Problema de los zapatos (",rows,"x",columns,") - [",paste0(perm,collapse="-"),"]")
-
+  problem$muros=dfcomb
+  problem$state.initial = c(rows,1)
+  problem$state.final   = c(1,columns)
+  problem$actions.possible=data.frame(action=c("Up","Down","Left","Right"),cost=1)
+  # problem$name = <Insert code here>
+  # problem$<aditional info> = <Insert code here>
   return(problem)
 }
+
+# entorno<- data.frame(
+#    x= c (1,1,1,1,1,1,1,2,2,2,2,2,2,2,3,3,3,3,3,3,3,4,4,4,4,4,4,4,5,5,5,5,5,5,5,6,6,6,6,6,6,6,7,7,7,7,7,7,7),
+#    y= c(1,2,3,4,5,6,7,1,2,3,4,5,6,7,1,2,3,4,5,6,7,1,2,3,4,5,6,7,1,2,3,4,5,6,7,1,2,3,4,5,6,7,1,2,3,4,5,6,7),
+#   pie = replicate(1,sample(0:1,49,rep=TRUE)),
+#    muroA = replicate(1,sample(0:1,49,rep=TRUE)),
+#   muroB = replicate(1,sample(0:1,49,rep=TRUE)),
+#   muroI = replicate(1,sample(0:1,49,rep=TRUE)),
+#   muroD =  replicate(1,sample(0:1,49,rep=TRUE))
+# )
+# actions.possible = data.frame(action=c("Arriba","Abajo","Izquierda","Derecha"),cost=1)
+
+
+# initialize.problem = function(rows=7, columns=7, perm = sample(0:(rows*columns-1))){
+#   problem = list()
+#   
+#    problem$state.initial = matrix(perm,nrow=rows,byrow = TRUE)
+#    problem$state.final   = matrix(0:(rows*columns-1),nrow=rows,byrow = TRUE)
+#    problem$actions.possible = data.frame(action=c("Arriba","Abajo","Izquierda","Derecha"),cost=1)
+#    problem$rows = rows
+#    problem$columns = columns
+#    problem$name = paste0("Problema de los zapatos (",rows,"x",columns,") - [",paste0(perm,collapse="-"),"]")
+# 
+#   return(problem)
+# }
 
 
 # =======================================================================

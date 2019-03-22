@@ -1,5 +1,5 @@
 # =======================================================================
-# Names: Anne Idigoras y Josune Ordoñez
+# Names: Anne Idigoras y Josune Ordo??ez
 # Group Number: Wakanda
 # Assignment:Laberinto de Zapatos
 # Date:
@@ -32,18 +32,38 @@ library(gridExtra)
 
 
 # ADDITIONAL FUNCTIONS (add any used method here)
-source(" ...")
-source(" ...")
-source(" ...")
-source(" ...")
+source("[TEMPLATE].problem-interface-XX.R")
+source("R_library/v1/Analyze.Results.R")
+source("R_library/v1/Plot.Results.R")
+source("R_library/v1/Breadth.First.Search.TS.R")
+source("R_library/v1/Uniform.Cost-TS.R")
+source("R_library/v1/A.Star.R")
 
 # =======================================================================
 # Check the proper operation of implemented function here!
+MyData <- read.csv(file="datos.csv", header=TRUE, sep=";")
+a<-MyData[,"Tablero"]
 
+#Solo si es cuadrado
+rows = sqrt(length(a))
+columns = sqrt(length(a))
+
+A=matrix(a,rows,columns)
+print(A)
+
+a<-c(0,0,0,0,0,1,0,1,0)
+A=matrix(a,rows,columns)
+print(A)
+rows=3
+columns=3
+MyData$Tablero<-NULL
+colnames(MyData)[1] <- "x"
 
 
 # =======================================================================
 # Solving of the problem (you have to adapt it)
+source("[TEMPLATE].problem-interface-XX.R")
+source("R_library/v1/A.Star.R")
 problem   = initialize.problem("<ANY_PARAMETER_IF_NEEDED>")
 res1 = method.XXXX(problem,"<OTHER_PARAMETERS>")
 res2 = method.YYYY(problem,"<OTHER_PARAMETERS>")
