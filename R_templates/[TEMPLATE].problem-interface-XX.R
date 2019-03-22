@@ -141,8 +141,30 @@ is.applicable = function (state, action, problem){
 # =======================================================================
 # Must return the state resulting on applying the action over the state
 effect = function (state, action){
-  result = ...
-  return(...)
+  action<-action$action
+  
+  ubicacion<- which(state==0, indice=TRUE)
+  row <- ubicacion[1]
+  col <- ubicacion[2]
+  result <- state 
+  
+  if (action == "Up") {
+    result[1]<-result[1]-1
+  }
+  
+  if (action == "Down") {
+    result[1]<-result[1]+1
+  }
+  
+  if (action == "Left") {
+    result[2]<-result[2]-1
+  }
+  
+  if (action == "Right") {
+    result[2]<-result[2]+1
+  }
+ 
+  return(result)
 }
 
 
@@ -151,28 +173,24 @@ effect = function (state, action){
 # * In case the final state is stablished by a condition, second argument
 #   could be omited
 is.final.state = function (state, finalstate){
-  ...
-  return(...)
+  return(identical(state,finalstate))
 }
-
 # =======================================================================
 # Must print the state in console (in a legible way)
 to.string = function (state){
-  ...
-  print(...)
+  print(state)
 }
 
 # =======================================================================
 # Return the cost of applying an action over a state
 get.cost = function (action,state){
-  ...
-  return(...)
+  return(action$cost)
 }
 
 # =======================================================================
 # (Used for Informed Algorithms)
 # Heuristic function used in Informed algorithms
 get.evaluation = function(state,problem){
-  ...
-  return(...)
+  print(sqrt((state[1]-problem$state.final[1])^2+(state[2]-problem$state.final[2])^2))
+  return(sqrt((state[1]-problem$state.final[1])^2+(state[2]-problem$state.final[2])^2))
 }
