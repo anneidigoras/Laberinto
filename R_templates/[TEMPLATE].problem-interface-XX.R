@@ -41,8 +41,8 @@ initialize.problem = function(lista=c(0,0,1,0,1,0,1,0,0),rows = 3,columns = 3,df
   problem$columns=columns
   
   problem$muros=dfcomb
-  problem$state.initial = c(rows,1)
-  problem$state.final   = c(1,columns)
+  problem$state.initial = c(rows,1) #estado inicial
+  problem$state.final   = c(1,columns) #estado final
   problem$actions.possible=data.frame(action=c("Up","Down","Left","Right"),cost=1)
   # problem$name = <Insert code here>
   # problem$<aditional info> = <Insert code here>
@@ -79,6 +79,61 @@ initialize.problem = function(lista=c(0,0,1,0,1,0,1,0,0),rows = 3,columns = 3,df
 # Must return TRUE or FALSE according with if the action can be done or not
 # over the specific state
 is.applicable = function (state, action, problem){
+  #estado fila
+  row=state[1]
+  #estado columna
+  col=state[2]
+
+  action = action$action
+  #subset nos permite seleccionar lo que queremos del dataframe; en este caso muro, fila y columna
+  d<-subset(problem$muros,x==row & y==col)
+  
+  #caso de ir arriba
+  if (action == "Up"){
+    
+    if(row!=1){# si fila distinto de 1
+    
+      if(problem$mapa[row-1,col]!=problem$mapa[row,col])
+      {
+        
+        if(d[,"Up"]==0)
+        {
+          result=TRUE
+        }
+        else{
+          result=FALSE
+        }
+      }
+      else{
+        result=FALSE
+      }
+    }
+    else{
+      result = FALSE
+    }
+  }
+  #caso de ir abajo
+  
+  if (action == "Down"){
+    if(row!=problem$rows){
+      if(problem$mapa[row+1,col]!=problem$mapa[row,col])
+      {
+        if(d[,"Down"]==0)
+        {
+          result=TRUE
+        }
+        else{
+          result=FALSE
+        }
+      }
+      else{
+        result=FALSE
+      }
+    }
+    else{
+      result = FALSE
+    }
+  }
   ...
   return(...)
 }

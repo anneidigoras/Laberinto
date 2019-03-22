@@ -64,7 +64,11 @@ colnames(MyData)[1] <- "x"
 # Solving of the problem (you have to adapt it)
 source("[TEMPLATE].problem-interface-XX.R")
 source("R_library/v1/A.Star.R")
-problem   = initialize.problem("<ANY_PARAMETER_IF_NEEDED>")
+problem   = initialize.problem(a,rows,columns,MyData)
+limit = 10000
+bfs=Breadth.First.Search(problem,limit)
+bfs = A.star(problem,limit)
+
 res1 = method.XXXX(problem,"<OTHER_PARAMETERS>")
 res2 = method.YYYY(problem,"<OTHER_PARAMETERS>")
 all = list(res1, res2)
