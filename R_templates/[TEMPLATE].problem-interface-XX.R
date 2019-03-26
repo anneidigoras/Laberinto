@@ -194,3 +194,4 @@ get.evaluation = function(state,problem){
   print(sqrt((state[1]-problem$state.final[1])^2+(state[2]-problem$state.final[2])^2))
   return(sqrt((state[1]-problem$state.final[1])^2+(state[2]-problem$state.final[2])^2))
 }
+
