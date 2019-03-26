@@ -88,6 +88,59 @@ is.applicable = function (state, action, problem){
   #subset nos permite seleccionar lo que queremos del dataframe; en este caso muro, fila y columna
   d<-subset(problem$muros,x==row & y==col)
   
+  
+  
+  #Caso izquierda, no encontrar 0 en columna 1
+  if (action == "Left"){
+    
+    if(col!=1){
+      if(problem$mapa[row,col-1]!=problem$mapa[row,col])
+      {
+        if(d[,"Left"]==0)
+        {
+          result=TRUE
+        }
+        else{
+          result=FALSE
+        }
+      }
+      else{
+        result=FALSE
+      }
+    }
+    else{
+      result = FALSE
+    }
+    
+  }
+  
+  
+  #Caso derecha; no encontrar 0 en columna 3
+  if (action == "Right"){
+    
+    if(col!=problem$columns){
+      if(problem$mapa[row,col+1]!=problem$mapa[row,col])
+      {
+        if(d[,"Right"]==0)
+        {
+          result=TRUE
+        }
+        else{
+          result=FALSE
+        }
+      }
+      else{
+        result=FALSE
+      }
+    }
+    else{
+      result = FALSE
+    }
+    
+  }
+  
+  
+  
   #caso de ir arriba
   if (action == "Up"){
     
@@ -106,13 +159,13 @@ is.applicable = function (state, action, problem){
       }
       else{
         result=FALSE
-      }
-    }
+          }
+       }
     else{
       result = FALSE
-    }
+        }
   }
-  #caso de ir abajo
+  #caso de ir abajo; no encontrar 0 en fila 3
   
   if (action == "Down"){
     if(row!=problem$rows){
@@ -134,9 +187,10 @@ is.applicable = function (state, action, problem){
       result = FALSE
     }
   }
-  ...
-  return(...)
+
+  return(result)
 }
+
 
 # =======================================================================
 # Must return the state resulting on applying the action over the state
