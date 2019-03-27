@@ -69,8 +69,8 @@ limit = 10000
 bfs=Breadth.First.Search(problem,limit)
 bfs = A.star(problem,limit)
 
-res1 = method.XXXX(problem,"<OTHER_PARAMETERS>")
-res2 = method.YYYY(problem,"<OTHER_PARAMETERS>")
+res1 = A.star(problem,"<OTHER_PARAMETERS>")
+res2 = Breadth.First.Search(problem,"<OTHER_PARAMETERS>")
 all = list(res1, res2)
 analyze.results(list(res1,res2),problem)
 
