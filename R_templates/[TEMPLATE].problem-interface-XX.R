@@ -197,7 +197,7 @@ is.applicable = function (state, action, problem){
 effect = function (state, action){
   action<-action$action
   
-  ubicacion<- which(state==0, indice=TRUE)
+  ubicacion<- which(state==0, arr.ind=TRUE)
   row <- ubicacion[1]
   col <- ubicacion[2]
   result <- state 
